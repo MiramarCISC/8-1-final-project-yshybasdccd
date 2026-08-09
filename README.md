@@ -1,137 +1,87 @@
-# CISC 192 Final Project Template
+# Simple Expense Tracker
 
-## Overview
+## Project Description
 
-This repository contains a fully working sample project that demonstrates the course skills from Weeks 1–7.
+My final project is a simple expense tracker. The program loads expenses from a text file and stores them in a linked list.
 
-The sample code is provided only as an example. It is **not intended to be submitted unchanged**.
+The user can display expenses, add a new expense, search for an expense by ID, sort expenses by amount, show the total amount of expenses, and remove an expense.
 
-## Important Student Instructions
+## How to Compile
 
-Before submitting your own final project, delete the sample project code and replace it with your own open-ended project.
+`make`
 
-The sample code demonstrates patterns you may reuse:
+## How to Run
 
-- Classes named as nouns from the project
-- Header/source separation
-- Unit tests
-- Arrays, searching, and sorting
-- Strings and structures/classes
-- A simple linked task list
-- A file-based inventory report
-- Test resource files stored in `tests/resources/`
+`./main`
 
-Do not submit the unchanged sample project as your final project.
+## How to Test
 
-## Correct Course Topics
+`make test`
 
-Your final project is worth **7 points total**.
+## Course Topics Integrated
 
-Each topic is worth **1 point**:
+### Week 1 - Program Basics
+The program uses variables, data types, constants, arithmetic, input, and output. The `calculateTotal()` function adds all expense amounts together.
 
-- **0.5 points** for integrating the topic into reachable project code
-- **0.5 points** for at least one unit test for that topic
+Code location: `src/project.cpp`
 
-The seven required topics are:
+### Week 2 - Decisions and Loops
+The program uses a repeating menu, if and else statements, loops, and input validation. The `isValidAmount()` and `isValidMenuChoice()` functions check user input.
 
-1. Week 1 Program Basics
-2. Week 2 Decisions and Loops
-3. Week 3 Functions and Program Design
-4. Week 4 Arrays, Searching, and Sorting
-5. Week 5 Strings and Structures
-6. Week 6 Pointers, Dynamic Memory, and Linked Lists
-7. Week 7 File I/O and Integration
+Code location: `src/main.cpp` and `src/project.cpp`
 
-## Unreachable Code Rule
+### Week 3 - Functions and Program Design
+The program is divided into functions with parameters and return values. Some examples are `calculateTotal()`, `findExpenseById()`, and `countExpenses()`.
 
-Separate unreachable code is not acceptable.
+Code location: `include/project.hpp` and `src/project.cpp`
 
-A topic only earns credit if it is part of your working project and can be reached through normal program execution, another project function/method, or an automated unit test.
+### Week 4 - Arrays, Searching, and Sorting
+Expenses can be copied from the linked list into an array. The program searches expenses by ID and sorts expenses by amount.
 
-## Build and Run
+Code location: `src/project.cpp`
 
-```bash
-make
-./main
-```
+### Week 5 - Strings and Structures
+The program uses the `Expense` structure. It stores the expense ID and category using strings and stores the amount as a double.
 
-## Run Tests
+Code location: `include/project.hpp`
 
-```bash
-make test
-```
+### Week 6 - Pointers, Dynamic Memory, and Linked Lists
+The program stores expenses in an `ExpenseNode` linked list. New nodes are created with `new` and removed with `delete`. The `clearExpenses()` function deletes the remaining nodes before the program ends.
 
-## Clean Build Files
+Code location: `src/project.cpp`
 
-```bash
-make clean
-```
+### Week 7 - File I/O and Integration
+The `loadExpensesFromFile()` function uses `ifstream` to load expense records from `data/expenses.txt`. The loaded records are added to the linked list and used by the program.
 
-## Object-Oriented Sample Design
+Code location: `src/project.cpp`
 
-This sample uses noun-based classes from the sample project:
+## Unit Tests by Topic
 
-| Class | Purpose |
-|---|---|
-| `ScoreList` | Demonstrates arrays, searching, sorting, and arithmetic |
-| `Student` | Demonstrates strings and custom record/class design |
-| `Task` | Demonstrates a task record |
-| `TaskNode` | Demonstrates linked list nodes |
-| `TaskList` | Demonstrates a simple linked task list |
-| `InventoryItem` | Demonstrates inventory records |
-| `InventoryReport` | Demonstrates file-based inventory reporting |
+### Week 1
+`testWeek1()` tests the total expense calculation.
 
-## Sample Code Is Example Only
+### Week 2
+`testWeek2()` tests amount validation and menu choice validation.
 
-The sample code in this repository should be deleted or replaced before final submission.
+### Week 3
+`testWeek3()` tests a function with parameters and a return value.
 
-Students may keep the project structure, Makefile, GitHub Actions workflow, and testing pattern, but the submitted project should reflect the student's own project idea.
+### Week 4
+`testWeek4()` tests searching an array by ID and sorting expenses by amount.
 
-## Required README Update
+### Week 5
+`testWeek5()` tests the `Expense` structure and its string fields.
 
-Before submitting your final project, update this README.md so it describes your own project.
+### Week 6
+`testWeek6()` tests linked list insertion, searching, removing a node, counting nodes, and cleanup.
 
-```text
-## Course Topics Integrated and Tested
+### Week 7
+`testWeek7()` creates a test file, loads expense records from it, and checks that the records were loaded correctly.
 
-1. Week 1 Program Basics
-   - Code location:
-   - Test location:
+All tests are located in `tests/test_project.cpp`.
 
-2. Week 2 Decisions and Loops
-   - Code location:
-   - Test location:
+## Known Limitations
 
-3. Week 3 Functions and Program Design
-   - Code location:
-   - Test location:
+Expense categories currently need to be one word.
 
-4. Week 4 Arrays, Searching, and Sorting
-   - Code location:
-   - Test location:
-
-5. Week 5 Strings and Structures
-   - Code location:
-   - Test location:
-
-6. Week 6 Pointers, Dynamic Memory, and Linked Lists
-   - Code location:
-   - Test location:
-
-7. Week 7 File I/O and Integration
-   - Code location:
-   - Test location:
-```
-
-## Final Submission Checklist
-
-- [ ] My project compiles with `make`.
-- [ ] My project runs with `./main`.
-- [ ] My tests run with `make test`.
-- [ ] I deleted or replaced the sample project code.
-- [ ] My project uses class names that are nouns from my own project.
-- [ ] My project integrates all 7 course topics in reachable code.
-- [ ] My project includes at least one unit test per course topic.
-- [ ] My README explains where each topic appears.
-- [ ] My README explains which test verifies each topic.
-- [ ] My code is committed and pushed to GitHub Classroom.
+Expenses added while the program is running are not saved back to `expenses.txt` after the program closes.

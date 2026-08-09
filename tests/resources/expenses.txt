@@ -1,0 +1,4 @@
+E100 Food 18.50
+E200 Gas 45.00
+E300 School 30.25
+E400 Entertainment 20.00
